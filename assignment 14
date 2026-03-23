@@ -1,0 +1,164 @@
+1️⃣ User List Task
+🔹 Container Component
+import UserList from "./UserList";
+
+function UserContainer() {
+  const users = [
+    { id: 1, name: "Kishore", age: 21 },
+    { id: 2, name: "Ram", age: 22 },
+  ];
+
+  return <UserList users={users} />;
+}
+
+export default UserContainer;
+🔹 Presentational Component
+function UserList({ users }) {
+  return (
+    <div>
+      {users.map((user) => (
+        <p key={user.id}>
+          {user.name} - {user.age}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+export default UserList;
+
+------------------------------------------------------------------------------
+
+2️⃣ Product Card Task
+🔹 Container
+import ProductCard from "./ProductCard";
+
+function ProductContainer() {
+  const products = [
+    { id: 1, name: "Phone", price: 20000 },
+    { id: 2, name: "Laptop", price: 60000 },
+  ];
+
+  return <ProductCard products={products} />;
+}
+
+export default ProductContainer;
+🔹 Presentational
+function ProductCard({ products }) {
+  return (
+    <div>
+      {products.map((p) => (
+        <div key={p.id}>
+          <h3>{p.name}</h3>
+          <p>₹{p.price}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default ProductCard;
+
+-------------------------------------------------------------
+
+3️⃣ Student Marks Task
+🔹 Container
+import StudentList from "./StudentList";
+
+function StudentContainer() {
+  const students = [
+    { name: "Kishore", marks: 75 },
+    { name: "Ram", marks: 30 },
+  ];
+
+  return <StudentList students={students} />;
+}
+
+export default StudentContainer;
+🔹 Presentational
+function StudentList({ students }) {
+  return (
+    <div>
+      {students.map((s, index) => (
+        <p key={index}>
+          {s.name} - {s.marks} -{" "}
+          {s.marks >= 40 ? "Pass" : "Fail"}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+export default StudentList;
+
+------------------------------------------------------------------------------
+
+4️⃣ Skills List Task
+🔹 Container
+import SkillsList from "./SkillsList";
+
+function DeveloperContainer() {
+  const developers = [
+    {
+      name: "John",
+      skills: ["HTML", "CSS", "JavaScript"],
+    },
+    {
+      name: "Kishore",
+      skills: ["React", "Node"],
+    },
+  ];
+
+  return <SkillsList developers={developers} />;
+}
+
+export default DeveloperContainer;
+🔹 Presentational
+function SkillsList({ developers }) {
+  return (
+    <div>
+      {developers.map((dev, index) => (
+        <div key={index}>
+          <h3>{dev.name}</h3>
+          <ul>
+            {dev.skills.map((skill, i) => (
+              <li key={i}>{skill}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default SkillsList;
+
+------------------------------------------------------------------------------------
+
+5️⃣ Employee Profile Task
+🔹 Container
+import EmployeeCard from "./EmployeeCard";
+
+function EmployeeContainer() {
+  const employee = {
+    name: "Kishore",
+    role: "Frontend Developer",
+    location: "Chennai",
+  };
+
+  return <EmployeeCard employee={employee} />;
+}
+
+export default EmployeeContainer;
+🔹 Presentational
+function EmployeeCard({ employee }) {
+  return (
+    <div>
+      <h2>{employee.name}</h2>
+      <p>{employee.role}</p>
+      <p>{employee.location}</p>
+    </div>
+  );
+}
+
+export default EmployeeCard;
