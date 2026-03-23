@@ -1,0 +1,149 @@
+task 1️
+
+Counter Update (Primitive)
+
+import { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+      <button onClick={() => setCount(count - 1)}>Decrease</button>
+      <button onClick={() => setCount(0)}>Reset</button>
+    </div>
+  );
+}
+
+export default Counter;
+
+---------------------------------------------------------------------------
+
+task 2
+
+Toggle Status (Boolean)
+
+import { useState } from "react";
+
+function Status() {
+  const [isOnline, setIsOnline] = useState(true);
+
+  return (
+    <div>
+      <h2>{isOnline ? "Online" : "Offline"}</h2>
+
+      <button onClick={() => setIsOnline(!isOnline)}>
+        Toggle Status
+      </button>
+    </div>
+  );
+}
+
+export default Status;
+
+---------------------------------------------------------------------------------
+
+task 3
+
+Update User Name (Object)
+
+import { useState } from "react";
+
+function User() {
+  const [user, setUser] = useState({
+    name: "John",
+    age: 25,
+  });
+
+  const updateName = () => {
+    setUser({
+      ...user,
+      name: "Sudhan",
+    });
+  };
+
+  return (
+    <div>
+      <h2>Name: {user.name}</h2>
+      <h3>Age: {user.age}</h3>
+
+      <button onClick={updateName}>Update Name</button>
+    </div>
+  );
+}
+
+export default User;
+
+-------------------------------------------------------------------------------
+
+task 4
+
+Update Age (Object)
+
+import { useState } from "react";
+
+function Person() {
+  const [person, setPerson] = useState({
+    name: "Ravi",
+    age: 22,
+    city: "Chennai",
+  });
+
+  const increaseAge = () => {
+    setPerson({
+      ...person,
+      age: person.age + 1,
+    });
+  };
+
+  return (
+    <div>
+      <h2>{person.name}</h2>
+      <p>Age: {person.age}</p>
+      <p>City: {person.city}</p>
+
+      <button onClick={increaseAge}>Increase Age</button>
+    </div>
+  );
+}
+
+export default Person;
+
+------------------------------------------------------------------------------------
+
+task 5
+
+Profile Update (Object)
+
+import { useState } from "react";
+
+function Profile() {
+  const [profile, setProfile] = useState({
+    name: "Priya",
+    role: "Developer",
+    experience: 2,
+  });
+
+  const promote = () => {
+    setProfile({
+      ...profile,
+      role: "Senior Developer",
+      experience: profile.experience + 1,
+    });
+  };
+
+  return (
+    <div>
+      <h2>{profile.name}</h2>
+      <p>Role: {profile.role}</p>
+      <p>Experience: {profile.experience} years</p>
+
+      <button onClick={promote}>Promote</button>
+    </div>
+  );
+}
+
+export default Profile;
