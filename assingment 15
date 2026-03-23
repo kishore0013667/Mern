@@ -1,0 +1,92 @@
+Task 1 — Basic Page Navigation (React Router)
+
+
+Install React Router
+npm install react-router-dom
+
+Folder Structure (Recommended)
+src/
+ ├── components/
+ │     └── Navbar.jsx
+ ├── pages/
+ │     ├── Home.jsx
+ │     ├── About.jsx
+ │     └── Contact.jsx
+ ├── App.jsx
+ └── main.jsx
+
+
+Create Pages
+
+Home.jsx
+function Home() {
+  return <h1>Home Page</h1>;
+}
+export default Home;
+
+-----About.jsx----
+function About() {
+  return <h1>About Page</h1>;
+}
+export default About;
+
+ Contact.jsx
+function Contact() {
+  return <h1>Contact Page</h1>;
+}
+export default Contact;
+
+ Create Navbar
+
+-----Navbar.jsx----
+import { Link } from "react-router-dom";
+
+function Navbar() {
+  return (
+    <nav>
+      <Link to="/">Home</Link> |{" "}
+      <Link to="/about">About</Link> |{" "}
+      <Link to="/contact">Contact</Link>
+    </nav>
+  );
+}
+
+export default Navbar;
+
+-----Setup Routing---
+
+App.jsx
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+
+----main.jsx (Vite)--
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
