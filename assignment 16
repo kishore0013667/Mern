@@ -1,0 +1,95 @@
+Login Page
+
+import { useNavigate, useLocation } from "react-router-dom";
+
+function Login() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleLogin = () => {
+    // redirect to dashboard
+    navigate("/dashboard");
+  };
+
+  return (
+    <div>
+      <h1>Login Page</h1>
+      <button onClick={handleLogin}>Login</button>
+    </div>
+  );
+}
+
+export default Login;
+
+---------------------------------------------------------------------------
+
+Dashboard Layout (with Outlet)
+
+import { Link, Outlet } from "react-router-dom";
+
+function DashboardLayout() {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+
+      <nav>
+        <Link to="/dashboard">Home</Link> |{" "}
+        <Link to="/dashboard/profile">Profile</Link>
+      </nav>
+
+      <hr />
+
+      {/* Child routes render here */}
+      <Outlet />
+    </div>
+  );
+}
+
+export default DashboardLayout;
+
+---------------------------------------------------------------------
+
+Dashboard Home
+
+function DashboardHome() {
+  return <h2>Dashboard Home</h2>;
+}
+
+export default DashboardHome;
+
+-------------------------------------------------------------------------
+
+Profile Page
+
+function Profile() {
+  return <h2>Profile Page</h2>;
+}
+
+export default Profile;
+
+----------------------------------------------------------------------------
+
+Routing Setup
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import DashboardLayout from "./pages/DashboardLayout";
+import DashboardHome from "./pages/DashboardHome";
+import Profile from "./pages/Profile";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<DashboardHome />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
