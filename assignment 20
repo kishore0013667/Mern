@@ -1,0 +1,104 @@
+1. Counter (Increase / Decrease using prev)
+
+import { useState } from "react";
+
+export function CounterPrev() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <>
+      <h3>{count}</h3>
+
+      <button onClick={() => setCount(prev => prev + 1)}>
+        Increase
+      </button>
+
+      <button onClick={() => setCount(prev => prev - 1)}>
+        Decrease
+      </button>
+    </>
+  );
+}
+
+--------------------------------------------------------------------
+
+2. Increase Twice (using prev)
+
+export function IncreaseTwice() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(prev => prev + 1);
+    setCount(prev => prev + 1); // correctly updates to +2
+  };
+
+  return (
+    <>
+      <h3>{count}</h3>
+      <button onClick={handleClick}>Increase Twice</button>
+    </>
+  );
+}
+
+---------------------------------------------------------------------------
+
+3. Toggle Show / Hide (using prev)
+
+export function ToggleText() {
+  const [show, setShow] = useState(true);
+
+  return (
+    <>
+      <button onClick={() => setShow(prev => !prev)}>
+        Toggle
+      </button>
+
+      {show && <p>This is visible text</p>}
+    </>
+  );
+}
+
+---------------------------------------------------------------------------------
+
+4. Add Skill (Array using prev + spread)
+
+export function AddSkillPrev() {
+  const [skills, setSkills] = useState(["HTML", "CSS"]);
+
+  return (
+    <>
+      <ul>
+        {skills.map((s, i) => <li key={i}>{s}</li>)}
+      </ul>
+
+      <button onClick={() => setSkills(prev => [...prev, "JavaScript"])}>
+        Add Skill
+      </button>
+    </>
+  );
+}
+
+------------------------------------------------------------------------------
+
+5. Update Age (Object using prev)
+
+export function UpdateAgePrev() {
+  const [user, setUser] = useState({ name: "Kishore", age: 20 });
+
+  return (
+    <>
+      <p>{user.name} - {user.age}</p>
+
+      <button
+        onClick={() =>
+          setUser(prev => ({
+            ...prev,
+            age: prev.age + 1
+          }))
+        }
+      >
+        Increase Age
+      </button>
+    </>
+  );
+}
