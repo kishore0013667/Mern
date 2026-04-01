@@ -1,0 +1,117 @@
+import { useState, useMemo } from "react";
+
+export default function App() {
+
+                 // ---------------- TASK 1 ----------------
+
+  const [num, setNum] = useState(10000);
+
+  const heavySum = (n) => {
+    let sum = 0;
+    for (let i = 1; i <= n; i++) {
+      // simulate heavy work
+      for (let j = 0; j < 1000; j++) {}
+      sum += i;
+    }
+    return sum;
+  };
+
+  const sumResult = useMemo(() => heavySum(num), [num]);
+
+
+                    // ---------------- TASK 2 ----------------
+
+
+  const [array, setArray] = useState([]);
+
+  const generateArray = () => {
+    const newArr = Array.from({ length: 10000 }, () =>
+      Math.floor(Math.random() * 1000)
+    );
+    setArray(newArr);
+  };
+
+  const evenSum = useMemo(() => {
+    const filtered = array.filter((n) => n % 2 === 0);
+    return filtered.reduce((acc, curr) => acc + curr, 0);
+  }, [array]);
+
+
+
+                      // ---------------- TASK 3 ----------------
+
+
+  const [primeInput, setPrimeInput] = useState(1);
+
+  const isPrime = (n) => {
+    if (n < 2) return false;
+    for (let i = 2; i <= n; i++) {
+      // heavy loop
+      if (i !== n && n % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const primeResult = useMemo(() => isPrime(primeInput), [primeInput]);
+
+  return (
+    <div className="min-h-screen bg-slate-900 text-white p-6 space-y-10">
+      <h1 className="text-3xl font-bold text-indigo-400">
+        React Performance Tasks 🚀
+      </h1>
+
+      {/* TASK 1 */}
+      <div className="bg-slate-800 p-5 rounded-2xl">
+        <h2 className="text-xl font-semibold mb-3">
+          Task 1 — Heavy Sum Calculation
+        </h2>
+
+        <input
+          type="number"
+          value={num}
+          onChange={(e) => setNum(Number(e.target.value))}
+          className="p-2 rounded bg-slate-700 mr-3"
+        />
+
+        <p className="mt-3">Sum: {sumResult}</p>
+      </div>
+
+      {/* TASK 2 */}
+      <div className="bg-slate-800 p-5 rounded-2xl">
+        <h2 className="text-xl font-semibold mb-3">
+          Task 2 — Large Array Filtering
+        </h2>
+
+        <button
+          onClick={generateArray}
+          className="bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-600"
+        >
+          Generate Array
+        </button>
+
+        <p className="mt-3">Even Numbers Sum: {evenSum}</p>
+      </div>
+
+      {/* TASK 3 */}
+      <div className="bg-slate-800 p-5 rounded-2xl">
+        <h2 className="text-xl font-semibold mb-3">
+          Task 3 — Prime Checker
+        </h2>
+
+        <input
+          type="number"
+          value={primeInput}
+          onChange={(e) => setPrimeInput(Number(e.target.value))}
+          className="p-2 rounded bg-slate-700 mr-3"
+        />
+
+        <p className="mt-3">
+          Result:{" "}
+          {primeResult ? "✅ Prime Number" : "❌ Not a Prime Number"}
+        </p>
+      </div>
+    </div>
+  );
+}
