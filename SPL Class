@@ -1,0 +1,125 @@
+import React from "react";
+
+function App() {
+
+------------- Variables --------------
+  const name = "Kishore";
+  const age = 21;
+  const city = "Madurai";
+
+------------- Object ----------------
+  const user = {
+    name: "Kishore",
+    email: "kishore@gmail.com",
+    phone: "1234567890"
+  };
+
+------------ Array --------------------
+  const fruits = ["Apple", "Mango", "Orange", "Banana"];
+
+--------- Array of Objects -------------
+  const users = [
+    { id: 1, name: "John", age: 25 },
+    { id: 2, name: "Alice", age: 22 }
+  ];
+
+---------- Nested Array --------------
+  const usersWithSkills = [
+    {
+      name: "John",
+      skills: ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      name: "Alice",
+      skills: ["React", "Node.js"]
+    }
+  ];
+
+------------ Conditional ----------------
+  const isLoggedIn = true;
+
+-------------- Ternary -----------------
+  const userAge = 17;
+
+----------- Logical AND ---------------
+  const isAdmin = true;
+
+----------- Optional Chaining ----------
+  const userData = {
+    address: {
+      city: "Chennai"
+    }
+  };
+
+  -------- Nullish Coalescing -----------
+  const username = null;
+
+  return (
+    <div style={{ padding: "20px" }}>
+
+      {/* Variable Rendering */}
+      <h2>1. Variables</h2>
+      <p>Name: {name}</p>
+      <p>Age: {age}</p>
+      <p>City: {city}</p>
+
+      {/*  Object Rendering */}
+      <h2>2. Object</h2>
+      <p>Name: {user.name}</p>
+      <p>Email: {user.email}</p>
+      <p>Phone: {user.phone}</p>
+
+      {/*  Array Rendering */}
+      <h2>3. Fruits List</h2>
+      <ul>
+        {fruits.map((fruit, index) => (
+          <li key={index}>{fruit}</li>
+        ))}
+      </ul>
+
+      {/*  Array of Objects */}
+      <h2>4. Users</h2>
+      {users.map((u) => (
+        <p key={u.id}>
+          {u.name} - {u.age}
+        </p>
+      ))}
+
+      {/*  Nested Array */}
+      <h2>5. Users with Skills</h2>
+      {usersWithSkills.map((user, index) => (
+        <div key={index}>
+          <p>{user.name}</p>
+          <ul>
+            {user.skills.map((skill, i) => (
+              <li key={i}>- {skill}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      {/*  Conditional Rendering */}
+      <h2>6. Login Status</h2>
+      {isLoggedIn ? <p>Welcome User</p> : <p>Please Login</p>}
+
+      {/*  Ternary */}
+      <h2>7. Age Check</h2>
+      <p>{userAge >= 18 ? "Adult" : "Minor"}</p>
+
+      {/*  Logical AND */}
+      <h2>8. Admin</h2>
+      {isAdmin && <p>Admin Dashboard</p>}
+
+      {/*  Optional Chaining */}
+      <h2>9. Optional Chaining</h2>
+      <p>City: {userData?.address?.city}</p>
+
+      {/*  Nullish Coalescing */}
+      <h2>10. Username</h2>
+      <p>{username ?? "Guest User"}</p>
+
+    </div>
+  );
+}
+
+export default App;
